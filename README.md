@@ -1,343 +1,103 @@
+<div align="center">
+
+<img src="images/embyvision-main.png" alt="EmbyVision Credits - OCR Edition" width="100%">
+
 # EmbyVision Credits
 
-**AI-powered end credits detection for Emby**
+### AI-Powered End Credits Detection for Emby
 
-EmbyVision Credits is an advanced end-credits detection plugin for **Emby Server**. It analyzes TV episodes to determine where end credits begin and creates Emby chapter markers at the detected credit point, allowing Emby to use its chapter/Auto Skip functionality.
+**Automatically detect end credits, create Emby chapter markers, and make your library ready for Auto Skip.**
 
-EmbyVision Credits combines multiple detection techniques, including OCR, black-frame analysis, audio analysis, video-pattern analysis, character-density analysis, fuzzy keyword matching, episode comparison, and adaptive sampling.
+[![Latest Release](https://img.shields.io/github/v/release/encryptedcity/EmbyVision-Credits?style=for-the-badge\&logo=github)](https://github.com/encryptedcity/EmbyVision-Credits/releases)
+[![Downloads](https://img.shields.io/github/downloads/encryptedcity/EmbyVision-Credits/latest/total?style=for-the-badge\&logo=github)](https://github.com/encryptedcity/EmbyVision-Credits/releases)
+[![Stars](https://img.shields.io/github/stars/encryptedcity/EmbyVision-Credits?style=for-the-badge\&logo=github)](https://github.com/encryptedcity/EmbyVision-Credits/stargazers)
+[![Forks](https://img.shields.io/github/forks/encryptedcity/EmbyVision-Credits?style=for-the-badge\&logo=github)](https://github.com/encryptedcity/EmbyVision-Credits/network/members)
+[![Issues](https://img.shields.io/github/issues/encryptedcity/EmbyVision-Credits?style=for-the-badge\&logo=github)](https://github.com/encryptedcity/EmbyVision-Credits/issues)
+[![.NET 6](https://img.shields.io/badge/.NET-6.0-512BD4?style=for-the-badge\&logo=dotnet\&logoColor=white)](https://dotnet.microsoft.com/)
+[![Emby](https://img.shields.io/badge/Emby-Plugin-52B54B?style=for-the-badge)](https://emby.media/)
 
-**Current Edition:** OCR Edition
-**Plugin Version:** 1.0.0.1
-**Target Framework:** .NET 6
-**Platform:** Emby Server
+**Created by [EncryptedCity](https://github.com/encryptedcity)**
 
----
-
-## Features
-
-### OCR Detection
-
-EmbyVision Credits supports external OCR processing through the EncryptedCity EmbyVision OCR service.
-
-Supported OCR configurations include:
-
-* **PaddleOCR CPU**
-* **PaddleOCR GPU**
-* OCR confidence filtering
-* OCR keyword detection
-* Fuzzy keyword matching
-* Region-of-interest processing
-* Image preprocessing
-* Sharpening
-* Adaptive sampling
-* Smart frame skipping
-* Consecutive-match detection
-* Early stopping
-* Configurable OCR timeouts and retries
-
-The OCR engine runs as a separate service and is accessed by the plugin through HTTP.
-
-This keeps the heavy OCR workload outside of the Emby plugin process.
+</div>
 
 ---
 
-## Detection Engines
+# 🎬 EmbyVision Credits
 
-EmbyVision Credits uses multiple detection systems that can work independently or together.
+**EmbyVision Credits** is an advanced end-credits detection plugin for **Emby Server**.
 
-### OCR
+Instead of relying on a single detection method, EmbyVision combines multiple detection technologies to determine where end credits begin and creates an Emby-compatible chapter marker at the detected location.
 
-Detects credit text directly from video frames.
+This allows Emby's chapter and Auto Skip functionality to automatically skip end credits.
 
-Supported external OCR service:
-
-**EncryptedCity EmbyVision OCR**
-
-* CPU Edition
-* GPU Edition
-* PaddleOCR
-* HTTP API
-
-### Black Frame Detection
-
-Analyzes video frames for black or near-black sections commonly associated with the end of an episode.
-
-This can be particularly useful for anime and shows with distinctive credit transitions.
-
-### Audio Analysis
-
-Uses audio characteristics and fingerprinting to help identify recurring credit sequences.
-
-### Character Density Detection
-
-Analyzes the amount and distribution of visible text in frames.
-
-This can help identify scrolling or dense credit sequences.
-
-### Video Pattern Detection
-
-Uses video characteristics such as:
-
-* Scene changes
-* Frame patterns
-* Credit transitions
-* Visual changes
-* Repeated sequences
-* Scrolling-credit behavior
-
-### Episode Comparison
-
-Previously processed episodes can be used to help narrow the expected credit region for subsequent episodes.
-
-This can significantly reduce unnecessary scanning.
+Designed for both **live-action television and anime**, EmbyVision Credits provides configurable detection methods, external OCR support, episode learning, scheduled processing, rules, backups, diagnostics, and hardware acceleration.
 
 ---
 
-# How Detection Works
+## ✨ Features
 
-EmbyVision Credits does not depend on a single detection technique.
+### 🔍 Multiple Detection Engines
 
-Depending on the configuration, the plugin can combine multiple signals such as:
+EmbyVision Credits can combine multiple detection signals to improve reliability:
 
-1. OCR text recognition
-2. Credit-related keywords
-3. Character density
-4. Black-frame analysis
-5. Audio characteristics
-6. Video/scene patterns
-7. Episode comparison
-8. Confidence scoring
-9. Consecutive frame confirmation
-10. Predictive/adaptive sampling
-
-The goal is to determine a reliable credit-start position rather than simply reacting to one frame.
-
----
-
-# Emby Integration
-
-When credits are detected, EmbyVision Credits can create an Emby-compatible chapter marker at the detected location.
-
-This allows Emby to identify the credits and use its available chapter/Auto Skip functionality.
-
-Features include:
-
-* Automatic credit chapter creation
-* Manual detection
-* Scheduled detection
-* Library-wide processing
-* Season processing
-* Episode processing
-* Existing-marker detection
-* Optional marker validation
-* Thumbnail generation
-* Marker backup
-* Marker restore
-* Per-series rules
-* Library rules
-* Studio rules
-* Tag rules
-* Auto Skip exclusions
+* 🧠 **PaddleOCR**
+* 🖥️ **PaddleOCR CPU**
+* 🚀 **PaddleOCR GPU / CUDA**
+* 🔤 **Tesseract OCR**
+* ⬛ **Black Frame Detection**
+* 🎵 **Audio Analysis**
+* 🎧 **Chromaprint / Audio Fingerprinting**
+* 📊 **Character Density Detection**
+* 🎞️ **Video Pattern Analysis**
+* 🎬 **Scene / Transition Analysis**
+* 📜 **Scrolling Credit Detection**
+* 🔎 **Keyword Detection**
+* 🧩 **Fuzzy Keyword Matching**
+* 🧠 **Episode Comparison / Learning**
 
 ---
 
-# Requirements
+# 🚀 OCR Edition
 
-## Emby Server
+The OCR Edition uses a separate **EncryptedCity EmbyVision OCR** service for PaddleOCR processing.
 
-A recent Emby Server version with plugin support is required.
+Keeping OCR outside of Emby allows the heavy OCR workload to run independently from the Emby Server process.
 
-The plugin targets:
+### OCR Architecture
 
-**.NET 6**
-
-## OCR
-
-OCR is provided by a separate external service.
-
-Recommended:
-
-**EncryptedCity EmbyVision OCR**
-
-Available configurations:
-
-* CPU Edition
-* GPU Edition
-
-The CPU edition does not require an NVIDIA GPU.
-
-The GPU edition requires compatible NVIDIA drivers and NVIDIA Container Toolkit support on the Docker host.
+```text
+                    ┌─────────────────────────┐
+                    │       Emby Server       │
+                    │                         │
+                    │   EmbyVision Credits    │
+                    │        Plugin            │
+                    └────────────┬────────────┘
+                                 │
+                                 │ HTTP OCR API
+                                 ▼
+                    ┌─────────────────────────┐
+                    │  EncryptedCity OCR      │
+                    │       Service           │
+                    └────────────┬────────────┘
+                                 │
+                       ┌─────────┴─────────┐
+                       │                   │
+                       ▼                   ▼
+                ┌─────────────┐     ┌─────────────┐
+                │ CPU Edition │     │ GPU Edition │
+                │   Port 8000 │     │   Port 8001 │
+                │             │     │ CUDA / NVIDIA│
+                └─────────────┘     └─────────────┘
+```
 
 ---
 
-# Architecture
+# ⚡ CPU and GPU OCR
 
-EmbyVision Credits and the OCR service are separate components.
-
-```text
-┌──────────────────────────────┐
-│         Emby Server          │
-│                              │
-│   EmbyVision Credits Plugin  │
-└──────────────┬───────────────┘
-               │
-               │ HTTP OCR API
-               │
-       ┌───────▼────────┐
-       │ EncryptedCity  │
-       │ EmbyVision OCR │
-       └───────┬────────┘
-               │
-        ┌──────┴──────┐
-        │             │
-     CPU OCR       GPU OCR
-     Port 8000     Port 8001
-```
-
-The plugin performs the detection workflow while the OCR service performs the OCR processing.
-
----
-
-# Installation
-
-## 1. Install EmbyVision Credits
-
-Download the latest plugin release from the repository's **Releases** section.
-
-The plugin is distributed as:
-
-```text
-EmbyVisionCredits.dll
-```
-
-Copy the DLL into the Emby plugins directory.
-
-### Windows
-
-The usual Emby plugin location is:
-
-```text
-%AppData%\Emby-Server\programdata\plugins
-```
-
-### Linux
-
-Depending on the Emby installation:
-
-```text
-/config/plugins
-```
-
-### Docker
-
-If your Emby container maps its configuration directory to a host path, place the plugin in:
-
-```text
-/config/plugins
-```
-
-inside the Emby container.
-
-For example, if your host maps:
-
-```text
-/mnt/user/appdata/emby
-```
-
-to:
-
-```text
-/config
-```
-
-then the plugin would normally be placed under:
-
-```text
-/mnt/user/appdata/emby/plugins
-```
-
-Restart Emby after installing or replacing the plugin DLL.
-
-Then open:
-
-**Emby Dashboard → Plugins**
-
-and verify that **EmbyVision Credits** is installed.
-
----
-
-# 2. Install EmbyVision OCR
-
-EmbyVision Credits uses an external OCR service for PaddleOCR processing.
-
-The OCR service is maintained separately from the Emby plugin.
-
-There are two supported configurations.
-
-## CPU Edition
-
-The CPU service listens on:
-
-```text
-8000
-```
-
-Example:
-
-```text
-http://YOUR-OCR-SERVER:8000
-```
-
-The CPU edition does not require an NVIDIA GPU.
-
----
-
-## GPU Edition
-
-The GPU service listens on:
-
-```text
-8001
-```
-
-Example:
-
-```text
-http://YOUR-OCR-SERVER:8001
-```
-
-The GPU edition uses PaddleOCR with CUDA acceleration.
-
-GPU operation requires:
-
-* NVIDIA GPU
-* Compatible NVIDIA driver
-* NVIDIA Container Toolkit
-* Docker configured for NVIDIA GPU access
-
-The OCR service repository contains the current Docker configuration and image/build instructions.
-
-**Do not use an old OCR image name from an outdated README. Use the image and instructions published by the current EncryptedCity EmbyVision OCR repository.**
-
----
-
-# 3. Configure OCR in EmbyVision Credits
-
-Open:
-
-**Emby Dashboard → Plugins → EmbyVision Credits**
-
-Open the plugin configuration page.
-
-Find the OCR service configuration.
-
-Select:
-
-```text
-OCR Engine: PaddleOCR
-```
-
-Then configure the appropriate endpoint.
+| Edition         |   Port | Acceleration | NVIDIA GPU     |
+| --------------- | -----: | ------------ | -------------- |
+| **CPU Edition** | `8000` | CPU          | ❌ Not required |
+| **GPU Edition** | `8001` | CUDA         | ✅ Required     |
 
 ### CPU
 
@@ -351,7 +111,277 @@ http://YOUR-OCR-SERVER:8000
 http://YOUR-OCR-SERVER:8001
 ```
 
-If the OCR service is running on the same machine as Emby:
+The GPU edition requires a compatible NVIDIA GPU, NVIDIA drivers, and NVIDIA Container Toolkit.
+
+---
+
+# 🧠 Intelligent Detection
+
+EmbyVision Credits does more than simply look for the word "credits."
+
+Depending on configuration, the detection pipeline can use:
+
+```text
+OCR
+ ↓
+Keyword Analysis
+ ↓
+Character Density
+ ↓
+Black Frame Analysis
+ ↓
+Audio Analysis
+ ↓
+Video Pattern Analysis
+ ↓
+Episode Comparison
+ ↓
+Confidence / Validation
+ ↓
+Credits Start
+ ↓
+Emby Chapter Marker
+```
+
+Multiple detection techniques can work together to reduce false positives and improve detection across different types of media.
+
+---
+
+# 📺 Emby Integration
+
+Detected credits are written as **Emby chapter markers**.
+
+This allows Emby to use its existing chapter and Auto Skip functionality.
+
+Features include:
+
+* ✅ Automatic credit chapter creation
+* ✅ Manual detection
+* ✅ Scheduled detection
+* ✅ Series processing
+* ✅ Season processing
+* ✅ Episode processing
+* ✅ Queue management
+* ✅ Existing marker detection
+* ✅ Marker validation
+* ✅ Thumbnail generation
+* ✅ Auto Skip exclusions
+* ✅ Per-series configuration
+* ✅ Library-wide processing
+
+---
+
+# 🧪 Dry Run & Debugging
+
+Before changing your library, you can run detection in **Dry Run** mode.
+
+Dry Run allows you to evaluate detection without immediately applying markers.
+
+Additional diagnostic tools include:
+
+* Dry Run
+* Dry Run Debug
+* Tracer
+* Detection logs
+* OCR diagnostics
+* Failed episode tracking
+* Progress monitoring
+
+These tools make it much easier to determine why a particular episode was or wasn't detected.
+
+---
+
+# 🎯 Episode Learning
+
+EmbyVision Credits can use previously processed episodes to help determine where credits are likely to begin.
+
+For example, if multiple episodes in the same season consistently place their credits around a similar portion of the runtime, that information can be used to narrow the search area for future episodes.
+
+Benefits include:
+
+* Faster processing
+* Smaller search windows
+* Less unnecessary OCR
+* More consistent results
+
+---
+
+# 🎌 Anime Detection
+
+Anime often uses different credit structures than live-action television.
+
+EmbyVision Credits includes detection methods that are particularly useful for anime, including:
+
+* Black-frame detection
+* Character-density analysis
+* OCR
+* Credit keyword detection
+* Video-pattern analysis
+* Adaptive frame sampling
+
+These methods can be combined to handle different anime credit styles.
+
+---
+
+# ⚙️ Performance
+
+EmbyVision Credits provides extensive performance controls.
+
+Available options include:
+
+* Adaptive frame rate
+* Smart frame skipping
+* Early stopping
+* Maximum frame limits
+* OCR batch processing
+* Parallel processing
+* Configurable delays
+* Episode comparison
+* Search-window optimization
+* Hardware acceleration
+* FFmpeg acceleration
+* CUDA / NVDEC where supported
+* Software fallback
+
+Actual performance depends on your media, CPU, GPU, storage, resolution, codec, and detection configuration.
+
+---
+
+# 🎮 GPU Acceleration
+
+GPU acceleration can be used for supported video processing and for the **PaddleOCR GPU Edition**.
+
+The OCR GPU service uses NVIDIA CUDA.
+
+A single GPU can potentially handle both video processing and OCR, depending on:
+
+* GPU memory
+* Video codec
+* Resolution
+* Number of simultaneous jobs
+* OCR workload
+* FFmpeg workload
+* Other applications using the GPU
+
+A second GPU is **not inherently required**.
+
+---
+
+# 📦 Installation
+
+## 1. Install the EmbyVision Credits Plugin
+
+Download the latest release from:
+
+**GitHub → Releases**
+
+Copy:
+
+```text
+EmbyVisionCredits.dll
+```
+
+into the Emby plugins directory.
+
+### Windows
+
+```text
+%AppData%\Emby-Server\programdata\plugins
+```
+
+### Linux
+
+```text
+/config/plugins
+```
+
+### Docker
+
+Place the plugin inside the mapped Emby configuration directory:
+
+```text
+/config/plugins
+```
+
+For example, if:
+
+```text
+/mnt/user/appdata/emby
+```
+
+is mapped to:
+
+```text
+/config
+```
+
+then the plugin directory will normally be:
+
+```text
+/mnt/user/appdata/emby/plugins
+```
+
+Restart Emby after installing the plugin.
+
+Then verify:
+
+**Emby Dashboard → Plugins → EmbyVision Credits**
+
+---
+
+# 2. Install EncryptedCity EmbyVision OCR
+
+EmbyVision Credits uses the external OCR service for PaddleOCR processing.
+
+The OCR service is maintained separately.
+
+There are two editions:
+
+### CPU Edition
+
+```text
+Port: 8000
+```
+
+### GPU Edition
+
+```text
+Port: 8001
+```
+
+The OCR repository contains the current Docker images, Docker Compose configuration, GPU requirements, and installation instructions.
+
+> **Important:** Always use the current image/build instructions from the EncryptedCity EmbyVision OCR repository rather than older Docker image names.
+
+---
+
+# 3. Configure OCR
+
+Open:
+
+**Emby Dashboard → Plugins → EmbyVision Credits → Settings**
+
+Configure:
+
+```text
+OCR Engine: PaddleOCR
+```
+
+Then enter your OCR endpoint.
+
+### CPU
+
+```text
+http://YOUR-OCR-SERVER:8000
+```
+
+### GPU
+
+```text
+http://YOUR-OCR-SERVER:8001
+```
+
+If the OCR service is running on the same host as Emby:
 
 ```text
 http://localhost:8000
@@ -363,186 +393,125 @@ or:
 http://localhost:8001
 ```
 
-If Emby is running inside Docker and the OCR service is another container, use the appropriate Docker network/container hostname rather than assuming `localhost` refers to the OCR container.
+If Emby and OCR are separate Docker containers, use the appropriate Docker network hostname instead of assuming `localhost` points to the OCR container.
 
 ---
 
 # 4. Test the Connection
 
-After configuring the endpoint, use:
+Click:
 
 **Test Connection**
 
-The plugin should contact the OCR service and report whether the service is available.
+The plugin will contact the OCR service and verify that it is reachable.
 
-If the connection fails, verify:
+If the connection fails, check:
 
-* OCR container is running
-* Correct IP address
-* Correct port
+* OCR container status
+* IP address
+* Port
 * Docker networking
-* Firewall rules
-* NVIDIA container configuration when using GPU OCR
-* OCR service logs
-* Emby server logs
+* Firewall
+* NVIDIA configuration
+* OCR logs
+* Emby logs
 
 ---
 
-# Quick Start
+# 🏁 Quick Start
 
-Once the plugin and OCR service are installed:
+After installation:
 
-1. Open **EmbyVision Credits**.
-2. Configure the OCR service.
-3. Run **Test Connection**.
-4. Open **Manual Detection**.
-5. Select a series, season, or episode.
-6. Run a **Dry Run** first if you want to inspect the detection without applying markers.
-7. Review the results.
-8. Run the actual detection.
-9. Check the episode's chapters in Emby.
+1. Install **EmbyVision Credits**
+2. Install **EncryptedCity EmbyVision OCR**
+3. Start the OCR service
+4. Configure the OCR endpoint
+5. Click **Test Connection**
+6. Open **Manual Detection**
+7. Select a series, season, or episode
+8. Run **Dry Run** first
+9. Review the results
+10. Run the actual detection
+11. Verify the new chapter marker in Emby
 
-For automated processing, configure the scheduled detection task.
-
----
-
-# Manual Detection
-
-The Manual Detection page provides tools for testing and processing your library.
-
-Depending on the configured version/options, you can process:
-
-* Individual episodes
-* Seasons
-* Series
-* Multiple selections
-* Entire libraries
-
-Additional controls include:
-
-* Dry Run
-* Dry Run Debug
-* Skip existing markers
-* Queue processing
-* Cancel processing
-* Progress monitoring
+For automated processing, enable the scheduled detection task.
 
 ---
 
-# Automatic Detection
+# 🗂️ Detection Rules
 
-EmbyVision Credits can process episodes automatically using Emby's scheduled-task system.
+Detection can be customized using rules for:
 
-Automatic detection can be configured to process your library without manually starting each detection job.
+* 📺 Series
+* 🏷️ Tags
+* 🎬 Studios
+* 📚 Libraries
 
-The plugin also provides configurable detection rules so different libraries or series can use different behavior.
+This allows different content to use different detection settings.
 
----
-
-# Detection Rules
-
-Rules can be configured for different parts of a media library.
-
-Supported rule types include:
-
-* Series
-* Tags
-* Studios
-* Libraries
-
-Rules can be used to customize detection behavior for specific content.
-
-This is useful when one series requires different detection settings from another.
+For example, anime can use more aggressive black-frame analysis while another library can rely more heavily on OCR.
 
 ---
 
-# Anime Detection
+# 💾 Backup & Restore
 
-Anime can have very different credit structures from traditional live-action television.
+EmbyVision Credits includes marker backup and restore functionality.
 
-EmbyVision Credits therefore includes detection options specifically useful for anime, including:
+Supported operations include:
 
-* Black-frame analysis
-* Character-density analysis
-* OCR
-* Credit keyword detection
-* Adaptive sampling
-* Video-pattern analysis
+* Marker export
+* Marker import
+* Bulk export
+* Bulk import
+* Scheduled backups
+* Restore operations
 
-These methods can be combined rather than relying exclusively on OCR.
-
----
-
-# Episode Learning
-
-Episode comparison allows previously processed episodes to help guide future detections.
-
-For example, if earlier episodes in a season consistently place credits within a particular portion of the runtime, later episodes can use that information to reduce unnecessary scanning.
-
-This can improve both detection speed and consistency.
+Backups are recommended before performing large-scale library reprocessing.
 
 ---
 
-# Performance
+# 🔔 Scheduled Detection
 
-EmbyVision Credits includes several performance controls.
+EmbyVision Credits integrates with Emby's scheduled-task system.
 
-These can include:
+This allows credit detection to run automatically across your library.
 
-* Frame sampling rate
-* Maximum frames
-* Search start position
-* Batch processing
-* Processing delays
-* Parallel processing
-* Smart frame skipping
-* Early stopping
-* Episode comparison
-* Hardware acceleration
-* OCR service selection
+Scheduled processing can be used for:
 
-The best configuration depends on the media library and hardware.
+* New episodes
+* Existing libraries
+* Large-scale detection
+* Automatic marker creation
 
 ---
 
-# GPU Acceleration
+# 📊 Progress Monitoring
 
-GPU acceleration is primarily relevant to the external PaddleOCR GPU service and FFmpeg/video processing.
+The plugin provides live processing information including:
 
-The OCR GPU service uses CUDA when properly configured.
+* Current episode
+* Queue status
+* Processing progress
+* Detection status
+* Cancellation
+* Failed episodes
+* Tracer information
 
-The plugin can also use available FFmpeg hardware acceleration where supported by the host and the selected configuration.
-
-GPU OCR and video decoding are separate workloads.
-
-A system does not necessarily require a second GPU; whether a single GPU can handle both workloads depends on GPU memory, workload, video codec, resolution, concurrent processing, and the amount of other GPU work occurring on the server.
-
----
-
-# OCR Service Ports
-
-The current EncryptedCity OCR configuration uses:
-
-| Service            |     Port | Accelerator |
-| ------------------ | -------: | ----------- |
-| EmbyVision OCR CPU | **8000** | CPU         |
-| EmbyVision OCR GPU | **8001** | NVIDIA CUDA |
-
-Older port references should not be used.
+Long-running library scans can therefore be monitored without guessing what the plugin is doing.
 
 ---
 
-# Configuration
+# 🔧 Configuration
 
-The plugin configuration contains controls for areas including:
+The configuration interface includes sections for:
 
 ### OCR Service
 
+* Endpoint
 * OCR engine
-* OCR endpoint
-* Connection testing
 * Timeout
-* Retry behavior
+* Retries
+* Connection testing
 
 ### OCR Detection
 
@@ -553,28 +522,26 @@ The plugin configuration contains controls for areas including:
 * Keywords
 * Fuzzy matching
 * ROI
-* Image preprocessing
+* Preprocessing
 
 ### Episode Comparison
 
-* Previous-episode learning
-* Search-window optimization
+* Previous episode learning
+* Search optimization
 * Detection guidance
 
 ### Character Density
 
-* Density detection
-* Thresholds
+* Density thresholds
 * Filtering
 * False-positive reduction
 
 ### Black Frame Detection
 
-* Black-frame threshold
+* Threshold
 * Duration
 * Density
-* Processing options
-* Anime-oriented settings
+* Anime settings
 
 ### Audio Detection
 
@@ -585,379 +552,308 @@ The plugin configuration contains controls for areas including:
 
 ### Hardware Acceleration
 
-* FFmpeg hardware acceleration
-* NVIDIA/CUDA acceleration
-* NVDEC where supported
+* CUDA
+* NVDEC
+* FFmpeg acceleration
+* Threads
 * Software fallback
-* Threading
 
 ### Automation
 
 * Scheduled detection
+* Queue processing
+* Existing markers
 * Automatic processing
-* Queue management
-* Existing-marker handling
-
-### Rules
-
-* Series rules
-* Tag rules
-* Studio rules
-* Library rules
 
 ### Backup
 
-* Marker export
-* Marker import
-* Bulk export
+* Export
+* Import
 * Scheduled backups
 
 ### Tracer
 
-* Detection results
+* Detection history
 * Failed episodes
 * Debug information
-* Processing diagnostics
 
 ---
 
-# Backup and Restore
+# 🌐 API
 
-EmbyVision Credits includes marker backup functionality.
-
-Markers can be exported so they can be restored later or transferred as part of library management.
-
-Available functionality includes:
-
-* Marker export
-* Marker import
-* Bulk export
-* Scheduled backups
-* Restore operations
-
-Use the backup tools before making large-scale changes to detection settings or reprocessing a large library.
-
----
-
-# Tracer
-
-Tracer provides diagnostic information about detection attempts.
-
-It can be used to investigate:
-
-* Successful detections
-* Failed detections
-* Detection decisions
-* OCR results
-* Detection timing
-* Processing problems
-
-When reporting a detection problem, Tracer output together with the relevant Emby and OCR logs is extremely useful.
-
----
-
-# API
-
-EmbyVision Credits exposes plugin endpoints under:
+EmbyVision Credits exposes REST-style endpoints under:
 
 ```text
 /CreditsDetector/
 ```
 
-The API supports functionality including:
+API functionality includes:
 
-* Starting detection
-* Cancelling detection
+* Start detection
+* Cancel detection
 * Queue management
-* Dry runs
-* Progress monitoring
-* Marker operations
+* Dry Run
+* Progress
+* Marker updates
 * Season operations
+* Season validation
 * Backup/export
 * Import
+* Bulk operations
 * Tracer operations
 * OCR connection testing
-* Thumbnail/debug functionality
+* Thumbnail/debug operations
 
-The plugin's **API** tab contains the current endpoint documentation.
+The **API** tab inside the plugin provides the current endpoint documentation.
 
-Because the API can change between plugin versions, the API tab in the installed version should be treated as the authoritative reference.
-
----
-
-# Troubleshooting
-
-## OCR connection fails
-
-Check:
-
-1. OCR container is running.
-2. Correct server IP/hostname is configured.
-3. Correct port is configured.
-4. Port **8000** is being used for CPU OCR.
-5. Port **8001** is being used for GPU OCR.
-6. Docker networking allows the Emby container to reach the OCR container.
-7. Firewall rules allow the connection.
-8. Check OCR container logs.
-9. Check Emby server logs.
+The API tab should be considered the authoritative API reference for the installed version.
 
 ---
 
-## GPU OCR fails
+# 🛠️ Troubleshooting
+
+## OCR Connection Failed
 
 Check:
+
+```text
+OCR container running?
+        ↓
+Correct IP?
+        ↓
+Correct port?
+        ↓
+Docker networking?
+        ↓
+Firewall?
+        ↓
+OCR logs?
+        ↓
+Emby logs?
+```
+
+Remember:
+
+```text
+CPU = 8000
+GPU = 8001
+```
+
+---
+
+## GPU OCR Doesn't Work
+
+Verify:
 
 * NVIDIA driver
 * NVIDIA Container Toolkit
 * GPU visibility inside Docker
-* GPU memory availability
+* GPU memory
+* CUDA configuration
 * OCR container logs
-* PaddleOCR initialization
 
-A GPU OCR container can start successfully while still failing when an OCR request requires more GPU memory than is available.
+A GPU container can start successfully but still fail when an OCR request requires more GPU memory than is available.
 
 ---
 
-## Detection finds no credits
+## No Credits Detected
 
 Try:
 
-* Running a Dry Run
-* Running Dry Run Debug
-* Checking Tracer
-* Checking OCR results
-* Reviewing credit keywords
-* Adjusting the search start
-* Adjusting frame sampling
-* Enabling episode comparison
-* Enabling black-frame detection
-* Checking the media's video/audio characteristics
-
-Different shows can require different detection strategies.
+* Dry Run
+* Dry Run Debug
+* Tracer
+* OCR keyword review
+* Search-start adjustment
+* Frame-rate adjustment
+* Episode Comparison
+* Black Frame Detection
+* Character Density
+* Audio Detection
 
 ---
 
-## Anime credits are missed
+## Anime Credits Missed
 
-Try enabling or increasing the importance of:
+Try enabling:
 
-* Black-frame detection
-* Character-density detection
-* OCR
+* Black Frame Detection
 * Anime detection options
+* Character Density
+* OCR
 * Video-pattern detection
 
-Anime credit sequences do not always behave like conventional live-action credits.
+---
+
+## Detection Is Slow
+
+Try:
+
+* Episode Comparison
+* Smart frame skipping
+* Lower frame sampling
+* Smaller search windows
+* GPU OCR
+* Hardware-accelerated FFmpeg
+* Adjusting parallel processing
 
 ---
 
-## Detection is slow
+# 🧑‍💻 Building From Source
 
-Possible improvements include:
-
-* Enable episode comparison
-* Reduce unnecessary frame sampling
-* Use smart frame skipping
-* Use GPU OCR when appropriate
-* Enable supported FFmpeg hardware acceleration
-* Adjust parallel processing
-* Avoid unnecessarily large OCR search ranges
-
-Actual performance depends heavily on the media, CPU, GPU, storage, and OCR configuration.
-
----
-
-## Plugin does not appear in Emby
-
-Check:
-
-* DLL is in the correct plugins directory
-* Emby was restarted
-* DLL is compatible with the installed Emby version
-* Plugin dependencies are present
-* Emby server logs for plugin-loading errors
-
----
-
-# Building From Source
-
-Clone the EncryptedCity EmbyVision Credits repository:
+Clone the repository:
 
 ```bash
 git clone https://github.com/encryptedcity/EmbyVision-Credits.git
 cd EmbyVision-Credits
 ```
 
-Build the plugin:
+Build:
 
 ```bash
 dotnet build -c Release
 ```
 
-The plugin targets:
+The project targets:
 
 ```text
 net6.0
 ```
 
-The resulting DLL will be located under the project's build output directory, normally:
+Build output is normally located under:
 
 ```text
 bin/Release/net6.0/
 ```
 
-The exact output path can vary depending on the project configuration.
-
 ---
 
-# Development Requirements
-
-To build the plugin from source you need:
-
-* .NET 6 SDK
-* Git
-* A compatible development environment
-* Emby development/plugin dependencies used by the project
-
-The project is written primarily in C# with the Emby configuration interface using web technologies.
-
----
-
-# Related Repository
-
-## EmbyVision OCR
-
-EmbyVision OCR is the separate OCR service used by EmbyVision Credits.
-
-It provides the external PaddleOCR service used by the plugin.
-
-The current service supports:
-
-```text
-CPU Edition → Port 8000
-GPU Edition → Port 8001
-```
-
-See the **EncryptedCity EmbyVision OCR repository** for:
-
-* Docker instructions
-* CPU image
-* GPU image
-* PaddleOCR configuration
-* NVIDIA requirements
-* Container configuration
-* API information
-* Troubleshooting
-
----
-
-# Project Structure
-
-The EmbyVision Credits source contains the plugin, detection services, configuration interface, scheduled processing, API functionality, and supporting components.
-
-A simplified structure is:
+# 📁 Project Structure
 
 ```text
 EmbyVision-Credits/
+│
 ├── EmbyVisionCredits/
+│
 ├── EmbyVisionCredits.Api/
+│
 ├── EmbyVisionCredits.Services/
 │   └── DetectionMethods/
+│
 ├── EmbyVisionCredits.ScheduledTasks/
+│
 ├── EmbyVisionCredits.Configuration/
+│
+├── images/
+│   ├── banner-gpu.png
+│   ├── banner-cpu.png
+│   ├── cover.png
+│   ├── icon.png
+│   ├── embyvision-main.png
+│   └── EmbyVision_video_1.5_00059_.mp4
+│
 ├── EmbyVisionCredits.csproj
+│
 └── README.md
 ```
 
-The exact directory structure can change as development continues.
+---
+
+# 📋 Version Information
+
+| Component   | Current            |
+| ----------- | ------------------ |
+| **Plugin**  | EmbyVision Credits |
+| **Edition** | OCR Edition        |
+| **Version** | 1.0.0.1            |
+| **Target**  | .NET 6 / net6.0    |
+| **OCR**     | PaddleOCR          |
+| **CPU OCR** | Port 8000          |
+| **GPU OCR** | Port 8001          |
+| **Server**  | Emby               |
 
 ---
 
-# Version
+# 🔗 EncryptedCity Projects
 
-| Field            | Value                                |
-| ---------------- | ------------------------------------ |
-| Plugin           | **EmbyVision Credits**               |
-| Edition          | **OCR Edition**                      |
-| Version          | **1.0.0.1**                          |
-| Target Framework | **.NET 6 / net6.0**                  |
-| OCR              | **PaddleOCR / external OCR service** |
-| CPU OCR Port     | **8000**                             |
-| GPU OCR Port     | **8001**                             |
+### EmbyVision Credits
 
----
+The Emby plugin responsible for detecting end credits and creating chapter markers.
 
-# License
+**Repository:**
+https://github.com/encryptedcity/EmbyVision-Credits
 
-This project is currently distributed without a license file unless one is included in the repository.
+### EmbyVision OCR
 
-Until an explicit license is added, the source code remains **all rights reserved**.
+The external OCR service used by EmbyVision Credits for PaddleOCR processing.
 
-Do not add an MIT, GPL, or other open-source license to documentation unless the repository actually contains that license and the author has chosen to release the project under it.
+**Repository:**
+https://github.com/encryptedcity/embyvision-ocr
 
 ---
 
-# Credits
+# 📸 Screenshots & Media
+
+Additional project artwork and demonstrations are available in the repository's:
+
+```text
+/images
+```
+
+directory.
+
+Included media includes:
+
+* CPU banner
+* GPU banner
+* Project cover
+* Plugin icon
+* Main project banner
+* Demonstration video
+
+---
+
+# 📜 License
+
+Unless a license file is present in this repository, the project remains **all rights reserved**.
+
+No MIT, GPL, Apache, or other open-source license should be assumed unless explicitly provided by the project author.
+
+---
+
+# ❤️ Credits
 
 **EmbyVision Credits**
-EncryptedCity
 
-OCR:
+Created and maintained by:
 
-**PaddleOCR**
+### EncryptedCity
 
-OCR service:
+Built for the **Emby Server** ecosystem.
 
-**EncryptedCity EmbyVision OCR**
+Powered by technologies including:
 
-Audio fingerprinting:
-
-**Chromaprint**
-
-Media server:
-
-**Emby Server**
+* PaddleOCR
+* Tesseract
+* Chromaprint
+* FFmpeg
+* .NET
+* NVIDIA CUDA
 
 ---
 
-# Support and Bug Reports
+<div align="center">
 
-Before reporting a problem, collect:
+## 🎬 EmbyVision Credits
 
-* Emby Server version
-* EmbyVision Credits version
-* Operating system
-* CPU
-* GPU, if applicable
-* OCR edition being used
-* OCR endpoint/port
-* Detection method/settings
-* Relevant Emby log entries
-* OCR container logs
-* Tracer/Dry Run Debug results
+### Intelligent End-Credits Detection for Emby
 
-For OCR problems, also specify whether the service is:
+**Detect → Analyze → Learn → Mark → Skip**
 
-```text
-CPU → 8000
-```
+Made with ❤️ by **EncryptedCity**
 
-or:
+[⭐ Star the Repository](https://github.com/encryptedcity/EmbyVision-Credits) ·
+[📦 Releases](https://github.com/encryptedcity/EmbyVision-Credits/releases) ·
+[🐛 Report an Issue](https://github.com/encryptedcity/EmbyVision-Credits/issues)
 
-```text
-GPU → 8001
-```
-
-This information makes it much easier to determine whether a problem is in EmbyVision Credits, FFmpeg/media processing, or the external OCR service.
-
----
-
-# About EmbyVision Credits
-
-EmbyVision Credits is designed to provide intelligent, configurable end-credit detection for Emby libraries without relying on a single detection technique.
-
-By combining OCR, video analysis, audio analysis, character-density analysis, episode comparison, and configurable detection rules, the plugin can adapt to a wide variety of television content, including both live-action and anime.
-
-**EmbyVision Credits — intelligent end-credits detection for Emby.**
-
-**Created by EncryptedCity.**
+</div>
